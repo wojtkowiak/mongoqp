@@ -75,15 +75,15 @@ the `twig.cache_dir` configuration option.
 #### Docker Setup 
 Clone the repo
 
-You just have to add the mongo uri in config.php and run commands : 
+You just have to add the mongo uri in config.php.dist and run commands : 
 ```
-$ docker build -t <your-docker-account>/mongoqp .
+$ docker build -t mongoqp .
 ```
 
 then run it using 
 
 ```
-$ docker run  <your-docker-account>/mongoqp
+$ docker run -p 8080:8080 mongoqp
 ```
 
 
