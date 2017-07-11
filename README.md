@@ -72,6 +72,21 @@ By default, the application will use `mongoqp-cache/` within the system's
 temporary directory. This path, which must be writable, may be customized via
 the `twig.cache_dir` configuration option.
 
+#### Docker Setup 
+Clone the repo
+
+You just have to add the mongo uri in config.php and run commands : 
+```
+$ docker build -t <your-docker-account>/mongoqp .
+```
+
+then run it using 
+
+```
+$ docker run  <your-docker-account>/mongoqp
+```
+
+
 ### Web Server
 
 The application can be started using:
