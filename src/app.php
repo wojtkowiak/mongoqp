@@ -24,7 +24,7 @@ $app->register(new TwigServiceProvider(), [
 
 $app['twig'] = $app->extend('twig', function($twig, $app) {
     $twig->getExtension('core')->setDateFormat('c');
-    $twig->getExtension('core')->setTimezone(ini_get('date.timezone'));
+    $twig->getExtension('core')->setTimezone("Asia/Kolkata");
     $twig->addExtension(new MongoQPExtension());
 
     return $twig;
