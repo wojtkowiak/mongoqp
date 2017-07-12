@@ -128,10 +128,11 @@ docker ps
 ```
 
 Output will be like  : 
-
+```
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                 
 1b8d8ce2d0e2        composer1           "php -S 0.0.0.0:80..."   20 hours ago        Up 8 hours         0.0.0.0:8080->8080/tcp
 66ad43771d39        composer1           "php -S 0.0.0.0:80..."   20 hours ago        Up 8 hours          8080/tcp             
+```
 
 just hit command: 
 
