@@ -72,6 +72,80 @@ By default, the application will use `mongoqp-cache/` within the system's
 temporary directory. This path, which must be writable, may be customized via
 the `twig.cache_dir` configuration option.
 
+#### Docker Setup 
+Clone the repo
+
+You just have to add the mongo uri in config.php.dist and run commands : 
+```
+$ docker build -t mongoqp .
+```
+
+then run it using 
+
+```
+$ docker run -p 8080:8080 mongoqp
+```
+
+
+If you want to connect the host machine MongoDB open your terminal and then : 
+
+### for MAC/LINUX:
+
+```
+ifconfig
+```
+
+then output will be something like this in mac : 
+```
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether f0:79:60:2b:4b:84 
+	inet6 fe80::14c2:77d2:3780:7e54%en0 prefixlen 64 secured scopeid 0x4 
+	inet 192.168.1.67 netmask 0xfffff800 broadcast 192.168.7.255
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active
+	
+```
+  
+just pick this ip 192.168.1.67 and you can pass it to config.php.
+
+same can be done in the linux.
+
+
+### in Windows open command prompt : 
+
+```
+ipconfig
+```
+
+you can find your ip there 
+
+
+### NOTE: You may require to set your date.timezone in php.ini file for that you can access you docker by command:
+
+```
+docker ps 
+```
+
+Output will be like  : 
+```
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                 
+1b8d8ce2d0e2        composer1           "php -S 0.0.0.0:80..."   20 hours ago        Up 8 hours         0.0.0.0:8080->8080/tcp
+66ad43771d39        composer1           "php -S 0.0.0.0:80..."   20 hours ago        Up 8 hours          8080/tcp             
+```
+
+just hit command: 
+
+```
+docker exec -it 1b8d8ce2d0e2 /bin/bash
+```
+
+you will get a prompt to your docker and then you can do relevent changes required.
+
+
+
+
+
 ### Web Server
 
 The application can be started using:
