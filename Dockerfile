@@ -11,11 +11,13 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-#create project using composer   
-RUN composer create-project jmikola/mongoqp
+ADD ./ /mongoqp
 
-#copy all configs to docker container 
-COPY src/config.php.dist /mongoqp/src/config.php
+#copy all configs to docker container
+COPY config.php /mongoqp/src/config.php
+
+RUN cd /mongoqp && \
+    composer create-project
 
 #Entry point for web
 ENTRYPOINT ["php", "-S", "0.0.0.0:8080", "-t", "/mongoqp/web"]

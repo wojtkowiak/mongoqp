@@ -55,7 +55,13 @@ $app->post('/pc/{database}', function(Request $request) use ($app) {
     $database = $request->get('database');
     $level = $request->get('level');
 
-    $app['query.profiler']->setProfilingLevel($database, $level);
+    if ($level == '3') {
+        $app['query.profiler']->clearProfilingData($database);
+    } else {
+        $app['query.profiler']->setProfilingLevel($database, $level);
+    }
 
     return $app->json(['ok' => 1]);
 })->bind('database_profiling_set');
+
+

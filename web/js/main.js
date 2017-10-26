@@ -22,6 +22,13 @@ $("form.profiling-control button").click(function(e) {
     $.post(action, { level: level });
 });
 
+$("form.profiling-clear button").click(function(e) {
+    var action = $(this).closest('form').attr('action');
+    $.post(action, { });
+});
+
+
+
 $.extend( $.fn.dataTableExt.oStdClasses, {
     "sWrapper": "dataTables_wrapper form-inline"
 });

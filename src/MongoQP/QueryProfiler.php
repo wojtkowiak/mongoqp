@@ -48,6 +48,12 @@ class QueryProfiler
         return $this->client->selectDatabase($database)->command(['profile' => -1])->toArray()[0]['was'];
     }
 
+    public function clearProfilingData($database)
+    {
+        $collection = 'profile';
+        return $this->client->selectDatabase($database)->command(['drop' => 'system.profile']);
+    }
+
     public function setProfilingLevel($database, $level)
     {
         $this->client->selectDatabase($database)->command(['profile' => (int) $level]);
